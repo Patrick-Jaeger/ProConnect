@@ -24,6 +24,12 @@ public class UserController {
 		this.userService = userService;
 	}
 	
+	@GetMapping("/login") 
+	public String showLoginForm(Model model) {
+		
+		return "/user/user-login";
+	}
+	
 	@GetMapping("/add") 
 	public String showSignUpForm(Model model) {
 		User user = new User();
