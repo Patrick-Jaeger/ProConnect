@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
   <body>
-    <div th:fragment="header"  style="color:white;background:black;" posi>
+    <div th:fragment="header"  style="color:white;background:black;">
       
 		<nav class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-		  <!-- Brand -->
-		  <a class="navbar-brand" th:href="@{/}">ProConnect</a>
-								
-		</nav>
-		
-		<div class="bg-dark navbar-dark" align=right >
-		<!-- Session existiert -->	
-		<span th:if="${#httpServletRequest != null and #httpServletRequest.getSession(false) != null}">
-			Welcome, <b> <a th:href="@{/profile}" th:text="${login}" ></a></b> | <a href="/logout">Logout </a>
-		</span>
-		<!-- Session existiert NICHT -->	
-		<span th:unless="${#httpServletRequest != null and #httpServletRequest.getSession(false) != null}">
-		    <b><a href="/user/login">Login</a></b>
-		</span>
+		  <div class="toolbar" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+			<div class="left-fill">
+				<div id="logo">
+		  			<h1> <a class="navbar-brand" th:href="@{/}">ProConnect</a> </h1>
+				</div>
+			</div>
+			<div class="center-fill" style="flex: 1; display : flex; align-items: center; padding: 10px;">
+				<div id="search-button" style="display: flex; align-items: left;">
+        			<button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/search'">Suche</button>
+        		</div>
+            </div>
+            <div class="right-fill">
+				<div id="nav-account-login">	
+            		<!-- Session existiert -->
+					<span th:if="${#httpServletRequest != null and #httpServletRequest.getSession(false) != null}">
+						<b> <a th:href="@{/profile}" th:text="${/login}" ></a></b> | <a href="/logout">Logout </a>
+					</span>
+					<!-- Session existiert NICHT -->	
+					<span th:unless="${#httpServletRequest != null and #httpServletRequest.getSession(false) != null}">
+		    			<a class="btn btn-primary btn-md" th:href="@{/user/login}">
+							<span>Login</span>
+						</a>
+					</span>
+				</div>
+            </div>
+		</div>
+		</nav>		
 		<br>
 		</div>
 		  
