@@ -25,6 +25,7 @@ body {
 .layout-content {
     width: 100%;
     padding-top: 0px;
+	align-items: center;
 }
 
 .container {
@@ -95,9 +96,15 @@ body {
  */ 
 
 .navbar-toggle {
-    display: inline-block;
+    display: flex;
+    position: static;
+    flex-flow: row nowrap;
     margin-left: 10px;
+    margin-right: 10px;
+    height: 60px;
+    
 }
+
 
 /*
  * Footer
@@ -117,4 +124,20 @@ body {
 	display: block;
 	color: #777777;
 	text-align: center;
+}
+
+.filter-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-menu label {
+    display: block;
+    margin-bottom: 8px;
 }
