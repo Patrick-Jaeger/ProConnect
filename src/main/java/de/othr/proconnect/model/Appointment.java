@@ -33,7 +33,7 @@ public class Appointment implements Serializable{
 	@JoinColumn(name = "timeslot_id", referencedColumnName = "id")
 	private Timeslot timeslot;
 	
-	@DateTimeFormat(pattern = "HH:mm dd") // das muss runterzählend implementiert werden
+	@DateTimeFormat(pattern = "HH:mm dd:MM:yyyy") // das muss runterzählend implementiert werden
 	private LocalDate ETA;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)

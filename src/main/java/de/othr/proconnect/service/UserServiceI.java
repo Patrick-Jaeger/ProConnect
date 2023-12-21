@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.othr.proconnect.model.User;
 
-public interface UserService {
+public interface UserServiceI {
 	
 	List<User> getAllUsers();
 	

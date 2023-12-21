@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import de.othr.proconnect.model.User;
-import de.othr.proconnect.service.UserService;
+import de.othr.proconnect.service.UserServiceI;
 import jakarta.validation.Valid;
 
 @RequestMapping("/user")
@@ -25,9 +25,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/login") 
-	public String showLoginForm(Model model) {
-		
-		return "/user/user-login";
+	public String showLoginForm() {
+		System.out.println("I am here");
+		//model.addAttribute("user", new User());
+		return "users/user-login";
 	}
 	
 	@GetMapping("/add") 
@@ -35,7 +36,7 @@ public class UserController {
 		User user = new User();
 		user.setId((long) -1);
 		model.addAttribute(null, user);
-		return "/user/user-add";
+		return "/users/user-add";
 	}
 	
 	@PostMapping("/add")

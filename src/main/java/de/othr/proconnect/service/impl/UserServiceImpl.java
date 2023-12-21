@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import de.othr.proconnect.model.User;
-import de.othr.proconnect.repository.UserRepository;
-import de.othr.proconnect.service.UserService;
+import de.othr.proconnect.repository.UserRepositoryI;
+import de.othr.proconnect.service.UserServiceI;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserServiceI {
 	
-	private UserRepository userRepository;
+	private UserRepositoryI userRepository;
 	
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepositoryI userRepository) {
 		super();
 		this.userRepository = userRepository;
 	}
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
-		return userRepository.findAll();
+		return (List<User>) userRepository.findAll();
 	}
 
 	@Override
