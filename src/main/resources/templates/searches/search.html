@@ -52,14 +52,66 @@
 						</div>
 					</div>
 				</div>
-				<!-- Dropdown-Menü -->
+				<!-- Filter-Dropdown-Menü -->
 				<div class="collapse" id="collapseFilterMenu">
-					<div class="container mt-4 bg-secondary rounded p-3" id="filterMenu">
-						<div class="container" id="filterFirstRow" style="display: flex;">
+					<div class="container mt-4 bg-secondary rounded p-3" id="filterMenu" style="display: flex; justify-content: flex-start; align-items: center;">
+						<div id="filterFirstRow"  class="container">
+							<div class="input-group" style="width: 50%;">
+								<!-- Input für Bundesland -->
+								<input type="text" class="form-control" placeholder="Suche nach Bundesland"
+									id="stateSearchInput" aria-describedby="stateDropdown" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+								<div class="input-group-append">
+									<!-- Dropdown-Auslöser -->
+									<button class="btn btn-info dropdown-toggle" type="button" id="stateDropdown"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Bundesland auswählen
+									</button>
+									<!-- Dropdown-Menü -->
+									<div class="dropdown-menu" aria-labelledby="stateDropdown">
+										<!-- Live-Suche Ergebnisse -->
+										<div id="stateResults"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="filterSecondRow"  class="container" style="display: flex; justify-content: flex-start; align-items: center;">
 							<!-- Range-Menu -->
-							<label><input type="checkbox"> Option 1</label>
-							<div class="input-group mb-3" style="width: 50%;">
-								<!-- Hier ist das Input-Element für die Kategorien -->
+							<div class="container" style="width: 25%; text-align: left; margin-right: auto;">
+								<label for="distanceRangeFilter">Distanz</label>
+								<input type="range" class="custom-range" id="distanceRangeFilter" min="1" max="5"
+									step="0.1">
+								<p id="positionDisplay">Position: <span id="currentPosition">1.0</span></p>
+							</div>
+							<div class="input-group" style="width: 50%; text-align: right; margin-left: auto;">
+								<!-- Input für Stadt -->
+								<input type="text" class="form-control" placeholder="Suche nach Stadt"
+									id="citySearchInput" aria-describedby="cityDropdown" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+								<div class="input-group-append">
+									<!-- Dropdown-Auslöser -->
+									<button class="btn btn-info dropdown-toggle" type="button" id="cityDropdown"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Stadt auswählen
+									</button>
+									<!-- Dropdown-Menü -->
+									<div class="dropdown-menu" aria-labelledby="cityDropdown">
+										<!-- Live-Suche Ergebnisse -->
+										<div id="cityResults"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="filterThirdRow"  class="container" style="display: flex; justify-content: flex-start; align-items: center;">
+							<!-- Bewertungs-Range-Menu -->
+							<div class="container" style="width: 25%; text-align: left; margin-right: auto;">
+								<label for="ratingsRangeFilter">Bewertung</label>
+								<input type="range" class="custom-range" id="ratingsRangeFilter" min="1" max="5"
+									step="0.1">
+								<p id="positionDisplay">Position: <span id="currentPosition">1.0</span></p>
+							</div>
+							<div class="input-group" style="width: 50%; text-align: right; margin-left: auto;">
+								<!-- Input für Kategorien -->
 								<input type="text" class="form-control" placeholder="Suche nach Kategorie"
 									id="categorySearchInput" aria-describedby="categoryDropdown" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false">
@@ -77,12 +129,16 @@
 								</div>
 							</div>
 						</div>
-						<div class="container" id="filterSecondRow" style="display: flex; justify-content: flex-start;">
-							<!-- Bewertungs-Range-Menu -->
-							<div class="container mt-5" style="width: 25%;">
-								<label for="ratingsRangeFilter">Bewertung</label>
-								<input type="range" class="custom-range" id="ratingsRangeFilter" min="1" max="5" step="0.1">
-								 <p id="positionDisplay">Position: <span id="currentPosition">1.0</span></p>
+						<div id="filterBottomRow" class="container" style="display: flex;">
+							<div id="removeAllFiltersButton" style="text-align: left; margin-right: auto;">
+								<button class="btn btn-warning btn-sm" type="submit">
+									Alle entfernen
+								</button>
+							</div>
+							<div id="applyFiltersButton" style="text-align: right; margin-left: auto;">
+								<button class="btn btn-success btn-sm" type="submit">
+									Filter anwenden
+								</button>
 							</div>
 						</div>
 					</div>
