@@ -34,8 +34,7 @@ public class UserController {
 	@GetMapping("/add") 
 	public String showSignUpForm(Model model) {
 		User user = new User();
-		user.setId((long) -1);
-		model.addAttribute(null, user);
+		model.addAttribute("user", user);
 		return "/users/user-add";
 	}
 	
@@ -44,19 +43,19 @@ public class UserController {
 		
 		if(results.hasErrors()) {
 			System.out.println(results.getAllErrors().toString());
-			return "/users/users-add";
+			return "/users/user-add";
 		}
 		
 		userService.saveUser(user);
 		
-		return "redirect:/users/user-all";
+		return "/users/user-success";
 	}
 	
 	@GetMapping("/update/{id}")
 	public String showUpdateUserForm(@PathVariable Long id, Model model) {
 		model.addAttribute("user", userService.getUserById(id));
 		System.out.println("updating student id = " + id);
-		return "/user/user-update";
+		return "/users/user-update";
 	}
 	
 	@PostMapping("/update")
@@ -75,12 +74,12 @@ public class UserController {
 		
 		if(results.hasErrors()) {
 			System.out.println(results.getAllErrors().toString());
-			return "/users/users-update";
+			return "/users/user-update";
 		}
 		
 		userService.saveUser(existingUser);
 		
-		return "redirect:/users/user-all";
+		return "redirect:/user/all";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -96,6 +95,6 @@ public class UserController {
 		model.addAttribute("users", userService.getAllUsers());
 		System.out.println(userService.getAllUsers().size() + "*********");
 		
-		return "/students/student-all";
+		return "users/user-all";
 	}
 }

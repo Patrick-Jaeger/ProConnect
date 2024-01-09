@@ -7,31 +7,22 @@ import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 @Entity
-@Table(name = "userProConnect")
+@Table(name = "user")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private long id;
 	
 	@Size(min = 5, max = 20, message = "username has to be at least 5 characters long!")
 	private String username;
@@ -44,7 +35,10 @@ public class User implements Serializable {
 	
 	@NotBlank(message = "Email must not be blank!")
 	private String email;
-	
+
+	@NotBlank(message = "Password must not be blank!")
+	private String password;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
 	
@@ -58,11 +52,11 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user") 
 	private Set<UserChat> userChat;
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -88,6 +82,14 @@ public class User implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public LocalDate getBirthDate() {
